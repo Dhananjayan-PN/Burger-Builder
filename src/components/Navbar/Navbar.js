@@ -14,14 +14,14 @@ const Navbar = () => {
       </a>
       <a
         style={{ color: window.location.href.split("/")[window.location.href.split("/").length - 1] === "builder" ? "#f50057" : "#9e9e9e" }}
-        href={window.location.href + "builder"}
+        href="/builder"
         id="links"
       >
         Builder
       </a>
       <a
         style={{ color: window.location.href.split("/")[window.location.href.split("/").length - 1] === "orders" ? "#f50057" : "#9e9e9e" }}
-        href={window.location.href + "orders"}
+        href="/orders"
         id="links"
       >
         Orders
