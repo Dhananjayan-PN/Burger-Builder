@@ -14,7 +14,7 @@ const Navbar = () => {
       </a>
       <a
         style={{ color: window.location.href.split("/")[window.location.href.split("/").length - 1] === "" ? "#f50057" : "#9e9e9e" }}
-        href="/builder"
+        href="/"
         id="links"
       >
         Builder
