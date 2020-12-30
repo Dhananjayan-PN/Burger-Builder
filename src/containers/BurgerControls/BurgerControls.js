@@ -21,15 +21,15 @@ const BurgerControls = (props) => {
     let trues = [];
     if (props.lettuce) {
       trues.push("Lettuce");
-      newPrice += 2;
+      newPrice += props.prices.lettucePrice;
     }
     if (props.cheese) {
       trues.push("Cheese");
-      newPrice += 2;
+      newPrice += props.prices.cheesePrice;
     }
     if (props.meat) {
       trues.push("Meat");
-      newPrice += 5;
+      newPrice += props.prices.meatPrice;
     }
     for (let i = 0; i < trues.length; i++) {
       if (i !== 0) {
@@ -39,7 +39,7 @@ const BurgerControls = (props) => {
     }
     setOrderString(newString);
     setPrice(newPrice);
-  }, [props.lettuce, props.cheese, props.meat]);
+  }, [props.prices.lettucePrice, props.prices.cheesePrice, props.prices.meatPrice, props.lettuce, props.cheese, props.meat]);
 
   return (
     <div className="BurgerControls">
@@ -76,7 +76,14 @@ const BurgerControls = (props) => {
           <Button autoFocus onClick={handleClose} color="secondary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="secondary" autoFocus>
+          <Button
+            onClick={() => {
+              setOpen(false);
+              props.checkout(orderString, price);
+            }}
+            color="secondary"
+            autoFocus
+          >
             PLACE ORDER
           </Button>
         </DialogActions>
