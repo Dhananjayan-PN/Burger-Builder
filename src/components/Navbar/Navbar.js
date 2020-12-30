@@ -13,7 +13,7 @@ const Navbar = () => {
         Burger Builder
       </a>
       <a
-        style={{ color: window.location.href.split("/")[window.location.href.split("/").length - 1] === "builder" ? "#f50057" : "#9e9e9e" }}
+        style={{ color: window.location.href.split("/")[window.location.href.split("/").length - 1] === "" ? "#f50057" : "#9e9e9e" }}
         href="/builder"
         id="links"
       >
