@@ -24,6 +24,12 @@
   font-weight: 400;
 }
 
+#ctrl-price {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 300;
+}
+
 #checkout-button {
   border-radius: 8px !important;
   margin-top: 15px;

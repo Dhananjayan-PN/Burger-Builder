@@ -5,6 +5,7 @@ import { Switch, Button, Dialog, DialogTitle, DialogContent, DialogContentText, 
 const BurgerControls = (props) => {
   const [open, setOpen] = useState(false);
   const [orderString, setOrderString] = useState("");
+  const [price, setPrice] = useState(0);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -16,15 +17,19 @@ const BurgerControls = (props) => {
 
   useEffect(() => {
     let newString = "1 x Burger with ";
+    let newPrice = 0;
     let trues = [];
     if (props.lettuce) {
       trues.push("Lettuce");
+      newPrice += 2;
     }
     if (props.cheese) {
       trues.push("Cheese");
+      newPrice += 2;
     }
     if (props.meat) {
       trues.push("Meat");
+      newPrice += 5;
     }
     for (let i = 0; i < trues.length; i++) {
       if (i !== 0) {
@@ -33,6 +38,7 @@ const BurgerControls = (props) => {
       newString += trues[i];
     }
     setOrderString(newString);
+    setPrice(newPrice);
   }, [props.lettuce, props.cheese, props.meat]);
 
   return (
@@ -50,6 +56,7 @@ const BurgerControls = (props) => {
         <h4 id="ctrl-name">Meat</h4>
         <Switch checked={props.meat} onChange={props.changeMeat} />
       </div>
+      <h3 id="ctrl-price">Price: ${price}</h3>
       <Button
         disabled={!props.lettuce && !props.cheese && !props.meat}
         onClick={handleClickOpen}
