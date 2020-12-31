@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./BurgerControls.css";
-import { Switch, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from "@material-ui/core";
+import { Switch, Button } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 
 const BurgerControls = (props) => {
-  const [open, setOpen] = useState(false);
   const [orderString, setOrderString] = useState("");
   const [price, setPrice] = useState(0);
 
@@ -19,10 +18,6 @@ const BurgerControls = (props) => {
         orderString: orderString
       }
     });
-  };
-
-  const handleClose = () => {
-    setOpen(false);
   };
 
   useEffect(() => {
@@ -76,28 +71,6 @@ const BurgerControls = (props) => {
       >
         Checkout
       </Button>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle id="responsive-dialog-title">Confirm Order</DialogTitle>
-        <DialogContent>
-          <DialogContentText>{orderString}</DialogContentText>
-          <DialogContentText>Would you like to place this order?</DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose} color="secondary">
-            Cancel
-          </Button>
-          <Button
-            onClick={() => {
-              setOpen(false);
-              props.checkout(orderString, price);
-            }}
-            color="secondary"
-            autoFocus
-          >
-            PLACE ORDER
-          </Button>
-        </DialogActions>
-      </Dialog>
     </div>
   );
 };
