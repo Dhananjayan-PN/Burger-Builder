@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./BurgerControls.css";
 import { Switch, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from "@material-ui/core";
+import { withRouter } from "react-router-dom";
 
 const BurgerControls = (props) => {
   const [open, setOpen] = useState(false);
@@ -8,7 +9,8 @@ const BurgerControls = (props) => {
   const [price, setPrice] = useState(0);
 
   const handleClickOpen = () => {
-    setOpen(true);
+    props.history.push("/checkout");
+    // setOpen(true);
   };
 
   const handleClose = () => {
@@ -92,4 +94,4 @@ const BurgerControls = (props) => {
   );
 };
 
-export default BurgerControls;
+export default withRouter(BurgerControls);

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { IconButton, Drawer, Divider } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -9,45 +10,29 @@ const Navbar = () => {
 
   return (
     <div className="Navbar">
-      <a href="/" id="logo">
+      <NavLink to="/" exact id="logo">
         Burger Builder
-      </a>
-      <a
-        style={{ color: window.location.href.split("/")[window.location.href.split("/").length - 1] === "" ? "#f50057" : "#9e9e9e" }}
-        href="/"
-        id="links"
-      >
+      </NavLink>
+      <NavLink to="/" exact id="links" activeStyle={{ color: "#f50057" }}>
         Builder
-      </a>
-      <a
-        style={{ color: window.location.href.split("/")[window.location.href.split("/").length - 1] === "orders" ? "#f50057" : "#9e9e9e" }}
-        href="/orders"
-        id="links"
-      >
+      </NavLink>
+      <NavLink to="/orders" id="links" activeStyle={{ color: "#f50057" }}>
         Orders
-      </a>
+      </NavLink>
       <IconButton onClick={toggleDrawer} id="menu-icon-button" aria-label="menu">
         <MenuIcon id="menu-icon" />
       </IconButton>
       <Drawer anchor={"left"} open={drawer} onClose={toggleDrawer}>
-        <a href="/" id="logo-menu">
+        <NavLink to="/" id="logo-menu">
           Burger Builder
-        </a>
+        </NavLink>
         <Divider />
-        <a
-          style={{ color: window.location.href.split("/")[window.location.href.split("/").length - 1] === "builder" ? "#f50057" : "#9e9e9e" }}
-          href="/builder"
-          id="links-menu"
-        >
+        <NavLink to="/builder" id="links-menu">
           Builder
-        </a>
-        <a
-          style={{ color: window.location.href.split("/")[window.location.href.split("/").length - 1] === "orders" ? "#f50057" : "#9e9e9e" }}
-          href="/orders"
-          id="links-menu"
-        >
+        </NavLink>
+        <NavLink to="/orders" id="links-menu">
           Orders
-        </a>
+        </NavLink>
       </Drawer>
     </div>
   );
