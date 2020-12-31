@@ -13,24 +13,24 @@ const Navbar = () => {
       <NavLink to="/" exact id="logo">
         Burger Builder
       </NavLink>
-      <NavLink to="/" exact id="links" activeStyle={{ color: "#f50057" }}>
+      <NavLink to="/" exact id="links" style={{ color: "#9e9e9e" }} activeStyle={{ color: "#f50057" }}>
         Builder
       </NavLink>
-      <NavLink to="/orders" id="links" activeStyle={{ color: "#f50057" }}>
+      <NavLink to="/orders" id="links" style={{ color: "#9e9e9e" }} activeStyle={{ color: "#f50057" }}>
         Orders
       </NavLink>
       <IconButton onClick={toggleDrawer} id="menu-icon-button" aria-label="menu">
         <MenuIcon id="menu-icon" />
       </IconButton>
       <Drawer anchor={"left"} open={drawer} onClose={toggleDrawer}>
-        <NavLink to="/" id="logo-menu">
+        <NavLink to="/" exact id="logo-menu" onClick={toggleDrawer}>
           Burger Builder
         </NavLink>
         <Divider />
-        <NavLink to="/builder" id="links-menu">
+        <NavLink to="/" exact id="links-menu" onClick={toggleDrawer} style={{ color: "#9e9e9e" }} activeStyle={{ color: "#f50057" }}>
           Builder
         </NavLink>
-        <NavLink to="/orders" id="links-menu">
+        <NavLink to="/orders" id="links-menu" onClick={toggleDrawer} style={{ color: "#9e9e9e" }} activeStyle={{ color: "#f50057" }}>
           Orders
         </NavLink>
       </Drawer>
