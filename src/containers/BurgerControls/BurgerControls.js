@@ -8,9 +8,17 @@ const BurgerControls = (props) => {
   const [orderString, setOrderString] = useState("");
   const [price, setPrice] = useState(0);
 
-  const handleClickOpen = () => {
-    props.history.push("/checkout");
-    // setOpen(true);
+  const handleCheckout = () => {
+    props.history.push({
+      pathname: "/checkout",
+      data: {
+        lettuce: props.lettuce,
+        cheese: props.cheese,
+        meat: props.meat,
+        price: price,
+        orderString: orderString
+      }
+    });
   };
 
   const handleClose = () => {
@@ -61,7 +69,7 @@ const BurgerControls = (props) => {
       <h3 id="ctrl-price">Price: ${price}</h3>
       <Button
         disabled={!props.lettuce && !props.cheese && !props.meat}
-        onClick={handleClickOpen}
+        onClick={handleCheckout}
         id="checkout-button"
         variant="outlined"
         color="secondary"

@@ -55,8 +55,7 @@ const BurgerBuilder = () => {
           country: "India"
         },
         email: "pndjay@gmail.com"
-      },
-      deliveryMethod: "regular"
+      }
     };
     axios
       .post("/orders.json", order)
