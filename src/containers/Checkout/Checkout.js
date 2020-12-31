@@ -105,7 +105,7 @@ const Checkout = (props) => {
         label="Country"
       />
       <br></br>
-      <div class="buttonGroup">
+      <div className="buttonGroup">
         <Button
           onClick={() => {
             props.history.push("/");
@@ -121,7 +121,16 @@ const Checkout = (props) => {
           onClick={() => {
             handleOrder(props.location.data?.orderString, props.location.data?.price);
           }}
-          disabled={props.location.data === null || props.location?.data === undefined}
+          disabled={
+            props.location.data === null ||
+            props.location.data === undefined ||
+            name === "" ||
+            email === "" ||
+            building === "" ||
+            street === "" ||
+            pinCode === "" ||
+            country === ""
+          }
           style={{ marginTop: 40, display: "inline-block" }}
           id="checkout-button"
           variant="outlined"
