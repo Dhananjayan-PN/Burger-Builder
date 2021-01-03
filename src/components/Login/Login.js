@@ -24,6 +24,7 @@ const Login = (props) => {
       <TextField
         fullWidth
         value={password}
+        type="password"
         onChange={(e) => {
           setPassword(e.target.value);
         }}
