@@ -30,6 +30,15 @@
   font-weight: 300;
 }
 
+#acc-links {
+  float: right;
+  margin-right: 25px;
+  margin-top: 7px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 300;
+}
+
 #links-menu {
   margin-top: 10px;
   margin-left: 20px;
@@ -57,9 +66,15 @@
   #logo {
     display: none;
   }
+
   #links {
     display: none;
   }
+
+  #acc-links {
+    margin-top: 12px;
+  }
+
   #menu-icon-button {
     display: inline-block;
     margin-bottom: 40px;

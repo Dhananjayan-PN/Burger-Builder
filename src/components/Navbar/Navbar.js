@@ -19,6 +19,12 @@ const Navbar = () => {
       <NavLink to="/orders" id="links" style={{ color: "#9e9e9e" }} activeStyle={{ color: "#f50057" }}>
         Orders
       </NavLink>
+      <NavLink to="/signup" id="acc-links" style={{ color: "#9e9e9e", marginRight: 45 }} activeStyle={{ color: "#f50057" }}>
+        Sign Up
+      </NavLink>
+      <NavLink to="/login" id="acc-links" style={{ color: "#9e9e9e" }} activeStyle={{ color: "#f50057" }}>
+        Log In
+      </NavLink>
       <IconButton onClick={toggleDrawer} id="menu-icon-button" aria-label="menu">
         <MenuIcon id="menu-icon" />
       </IconButton>

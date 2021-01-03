@@ -3,6 +3,8 @@ import BurgerBuilder from "../../containers/BurgerBuilder/BurgerBuilder";
 import Navbar from "../Navbar/Navbar";
 import Checkout from "../../containers/Checkout/Checkout";
 import Orders from "../../containers/Orders/Orders";
+import SignUp from "../SignUp/SignUp";
+import Login from "../Login/Login";
 import "./Layout.css";
 
 const Layout = () => {
@@ -13,6 +15,8 @@ const Layout = () => {
         <Route path="/" exact component={BurgerBuilder} />
         <Route path="/orders" component={Orders} />
         <Route path="/checkout" component={Checkout} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="/login" component={Login} />
         <Route render={() => <h1>404 Page Not Found!</h1>} />
       </Switch>
     </div>
