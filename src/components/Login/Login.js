@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import { TextField, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from "@material-ui/core";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Cookies from "js-cookie";
 
 const Login = (props) => {
   const [loading, setLoading] = useState(false);
@@ -53,6 +54,7 @@ const Login = (props) => {
           setPassword("");
           Cookies.set("user", data);
           props.history.push("/");
+          document.location.reload();
         }
       });
   };

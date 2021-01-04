@@ -3,13 +3,14 @@ import { TextField, Button, Dialog, DialogTitle, DialogContent, DialogContentTex
 import axios from "../../axios-orders";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import "./Checkout.css";
+import Cookies from "js-cookie";
+import { Redirect } from "react-router";
 
 const Checkout = (props) => {
+  const user = Cookies.getJSON("user");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [failure, setFailure] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [building, setBuilding] = useState("");
   const [street, setStreet] = useState("");
   const [pinCode, setPinCode] = useState("");
@@ -28,8 +29,8 @@ const Checkout = (props) => {
       orderString: orderString,
       price: price,
       customer: {
-        name: name,
-        email: email,
+        name: user.displayName,
+        email: user.email,
         address: {
           builing: building,
           street: street,
@@ -45,7 +46,6 @@ const Checkout = (props) => {
         if (response.status === 200) {
           setSuccess(true);
         } else {
-          console.log(response);
           setFailure(true);
         }
       })
@@ -56,20 +56,22 @@ const Checkout = (props) => {
       });
   };
 
-  return (
+  return user === null || user === undefined ? (
+    <Redirect to="/login" />
+  ) : (
     <div className="Checkout">
       <h2 id="chk-heading">Place Order</h2>
       <h3 id="chk-content">Order: {props.location.data?.orderString ?? "No Order"}</h3>
       <h3 id="chk-content">Total Price: ${props.location.data?.price ?? 0}</h3>
       <TextField
-        onChange={(e) => setName(e.target.value)}
+        value={user.displayName ?? ""}
         color="secondary"
         required
         style={{ display: "inline-block", marginTop: 20, marginRight: 20 }}
         label="Name"
       />
       <TextField
-        onChange={(e) => setEmail(e.target.value)}
+        value={user.email ?? ""}
         color="secondary"
         required
         style={{ display: "inline-block", marginTop: 20, marginRight: 20 }}
@@ -124,8 +126,8 @@ const Checkout = (props) => {
           disabled={
             props.location.data === null ||
             props.location.data === undefined ||
-            name === "" ||
-            email === "" ||
+            user.displayName === "" ||
+            user.email === "" ||
             building === "" ||
             street === "" ||
             pinCode === "" ||

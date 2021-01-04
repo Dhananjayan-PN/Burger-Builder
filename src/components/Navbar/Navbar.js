@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { IconButton, Drawer, Divider } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import Cookies from "js-cookie";
 
 const Navbar = () => {
   const [drawer, setDrawer] = useState(false);
+  const [user, setUser] = useState(null);
   const toggleDrawer = () => setDrawer(!drawer);
+
+  useEffect(() => {
+    setUser(Cookies.getJSON("user"));
+  }, []);
 
   return (
     <div className="Navbar">
@@ -19,12 +25,20 @@ const Navbar = () => {
       <NavLink to="/orders" id="links" style={{ color: "#9e9e9e" }} activeStyle={{ color: "#f50057" }}>
         Orders
       </NavLink>
-      <NavLink to="/signup" id="acc-links" style={{ color: "#9e9e9e", marginRight: 45 }} activeStyle={{ color: "#f50057" }}>
-        Sign Up
-      </NavLink>
-      <NavLink to="/login" id="acc-links" style={{ color: "#9e9e9e" }} activeStyle={{ color: "#f50057" }}>
-        Log In
-      </NavLink>
+      {user === null || user === undefined ? (
+        [
+          <NavLink to="/signup" key="singup" id="acc-links" style={{ color: "#9e9e9e", marginRight: 45 }} activeStyle={{ color: "#f50057" }}>
+            Sign Up
+          </NavLink>,
+          <NavLink to="/login" key="login" id="acc-links" style={{ color: "#9e9e9e" }} activeStyle={{ color: "#f50057" }}>
+            Log In
+          </NavLink>
+        ]
+      ) : (
+        <NavLink to="/profile" id="acc-links" style={{ color: "#9e9e9e", marginRight: 50 }} activeStyle={{ color: "#f50057" }}>
+          {user.displayName}
+        </NavLink>
+      )}
       <IconButton onClick={toggleDrawer} id="menu-icon-button" aria-label="menu">
         <MenuIcon id="menu-icon" />
       </IconButton>

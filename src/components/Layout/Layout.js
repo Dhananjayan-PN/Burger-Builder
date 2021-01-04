@@ -5,6 +5,7 @@ import Checkout from "../../containers/Checkout/Checkout";
 import Orders from "../../containers/Orders/Orders";
 import SignUp from "../SignUp/SignUp";
 import Login from "../Login/Login";
+import Profile from "../Profile/Profile";
 import "./Layout.css";
 
 const Layout = () => {
@@ -17,6 +18,7 @@ const Layout = () => {
         <Route path="/checkout" component={Checkout} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
+        <Route path="/profile" component={Profile} />
         <Route render={() => <h1>404 Page Not Found!</h1>} />
       </Switch>
     </div>
